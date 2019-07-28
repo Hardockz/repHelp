@@ -26,7 +26,7 @@ func main() {
 
 	// Routes
 	service.Server.GET("/", hello)
-	service.Server.POST("/login", createUser)
+	service.Server.POST("/login", service.createUser)
 	// e.POST("/login", login)
 
 	// Start server

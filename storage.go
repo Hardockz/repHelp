@@ -4,6 +4,6 @@ package main
 // 	return nil
 // }
 
-func (s *StoreImpl) createUser(string, int64, string) error {
+func (s *StoreImpl) createUser(c string, phone int64, email string) error {
 	return nil
 }

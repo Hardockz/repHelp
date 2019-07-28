@@ -25,7 +25,7 @@ type Service struct {
 }
 
 type Store interface {
-	createUser(name string, phone int64, email string) error
+	createUser(c string, phone int64, email string) error
 }
 
 type StoreImpl struct {
