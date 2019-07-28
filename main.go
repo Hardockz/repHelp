@@ -10,7 +10,7 @@ import (
 func newService() *Service {
 	service := &Service{
 		Server: echo.New(),
-		Store:  createDB(),
+		Store:  &StoreImpl{DB: createDB()},
 	}
 
 	return service
@@ -30,7 +30,8 @@ func main() {
 	// e.POST("/login", login)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":1546"))
+	service.Server.Logger.Fatal(service.Server.Start(":1546"))
+	// e.Logger.Fatal(e.Start(":1546"))
 	//-------------
 }
 

@@ -1,5 +1,10 @@
 package main
 
+import (
+	"github.com/jmoiron/sqlx"
+	"github.com/labstack/echo"
+)
+
 type Member struct {
 	ID   string
 	Name string `json:"name"`
@@ -15,10 +20,14 @@ type Rep struct {
 }
 
 type Service struct {
-	Server *echo
+	Server *echo.Echo
 	Store  Store
 }
 
 type Store interface {
 	createUser(name string, phone int64, email string) error
+}
+
+type StoreImpl struct {
+	DB *sqlx.DB
 }

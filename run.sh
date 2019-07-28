@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd ~/mattermost-bot-test && make && docker build -t rephelp -f deploy/Dockerfile . && cd ~/mattermost-bot-test/deploy && docker-compose up
+cd ~/repHelp && make && docker build -t rephelp -f deploy/Dockerfile . && cd ~/repHelp/deploy && docker-compose up
 
 
