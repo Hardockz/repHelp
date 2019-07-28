@@ -1,0 +1,33 @@
+version: '2'
+services:
+  db:
+    image: postgres
+    environment:
+      # GET_HOSTS_FROM: dns
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 15432:5432
+    networks:
+      - portgres-network
+      
+  app:
+    build: Dockerfile
+    image: rephelp
+    command: ["mattermost-bot-test"]
+    privileged: true
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "11546:1546"
+    depends_on:
+      - db
+    networks:
+      - portgres-network
+
+networks:
+  portgres-network:
+    driver: bridge
